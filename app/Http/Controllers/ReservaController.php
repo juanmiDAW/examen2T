@@ -6,6 +6,8 @@ use App\Http\Requests\StoreReservaRequest;
 use App\Http\Requests\UpdateReservaRequest;
 use App\Models\Reserva;
 
+use function PHPUnit\Framework\returnSelf;
+
 class ReservaController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        //
+        return view('reservas.index');
     }
 
     /**
