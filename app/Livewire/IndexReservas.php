@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Http\Requests\StoreReservaRequest;
 use App\Models\Pista;
 use App\Models\Reserva;
 use Livewire\Component;
@@ -31,6 +30,13 @@ class IndexReservas extends Component
             'user_id'=>auth()->user()->id,
         ]);
         $this->dispatch('reservaCreada');
+    }
+
+    public function anularReserva($reservada){
+
+        Reserva::where('id', $reservada)->delete();
+
+        $this->dispatch('reservaAnulada');
     }
 
     public function render()
