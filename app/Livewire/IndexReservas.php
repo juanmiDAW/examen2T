@@ -8,12 +8,17 @@ use Livewire\Component;
 class IndexReservas extends Component
 {
     public $pistas;
+    public $pistaSeleccionada;
     public $pista_id;
 
     public function mount()
     {
         $this->pistas = Pista::all();
-        $this->pista_id = $this->pistas->first()->id;
+        if ($this->pista_id == null) {
+        } else {
+
+            $this->pistaSeleccionada = Pista::with('reservas')->where('id', $this->pista_id)->get();
+        }
     }
 
     public function render()
