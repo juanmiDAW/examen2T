@@ -11,7 +11,6 @@
                     <div class="p-6 text-gray-900">
                         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                                     @livewire('index-reservas')
-                            </table>
                         </div>
                     </div>
                 </div>

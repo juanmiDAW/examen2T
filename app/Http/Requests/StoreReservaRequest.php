@@ -11,7 +11,7 @@ class StoreReservaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreReservaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'pista_id' => 'required|integer',
+            'diaYHora' => 'required|date',
         ];
     }
 }

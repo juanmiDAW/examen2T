@@ -31,7 +31,11 @@ class ReservaController extends Controller
      */
     public function store(StoreReservaRequest $request)
     {
-        //
+        $validate = $request->validated();
+        $validate['user_id'] = auth()->user()->id;
+        
+        Reserva::create($validate);
+        return redirect()->route('reservas.index');
     }
 
     /**
