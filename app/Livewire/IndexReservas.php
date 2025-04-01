@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Http\Requests\StoreReservaRequest;
 use App\Models\Pista;
+use App\Models\Reserva;
 use Livewire\Component;
 
 class IndexReservas extends Component
@@ -10,6 +12,7 @@ class IndexReservas extends Component
     public $pistas;
     public $pistaSeleccionada;
     public $pista_id;
+    public $diaYHora;
 
     public function mount()
     {
@@ -19,6 +22,15 @@ class IndexReservas extends Component
 
             $this->pistaSeleccionada = Pista::with('reservas')->where('id', $this->pista_id)->get();
         }
+    }
+
+    public function crearReserva($diaYHora){
+        Reserva::create([
+            'pista_id'=>$this->pista_id,
+            'diaYHora'=>$diaYHora,
+            'user_id'=>auth()->user()->id,
+        ]);
+        $this->dispatch('reservaCreada');
     }
 
     public function render()

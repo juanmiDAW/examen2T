@@ -26,24 +26,24 @@
                     <th>{{ $i }}:00</th>
                     @for ($j = 0; $j < 5; $j++)
                         @php
-                            $fecha = now()->startOfWeek()->addDay($j)->setTime($i, 0, 0);
-                            $reservada = \App\Models\Reserva::where('pista_id', $pista_id)->where('diaYHora', $fecha)->first();
+                            $diaYHora = now()->startOfWeek()->addDay($j)->setTime($i, 0, 0);
+                            $reservada = \App\Models\Reserva::where('pista_id', $pista_id)->where('diaYHora', $diaYHora)->first();
                         @endphp
                         <td>
-                            <form action="{{ route('reservas.store') }}" method="post">
+                            {{-- <form action="{{ route('reservas.store') }}" method="post">
                                 @csrf
 
                                 <input type="hidden" name="diaYHora" value="{{ $fecha }}">
-                                <input type="hidden" name="pista_id" value="{{ $pista_id }}">
+                                <input type="hidden" name="pista_id" value="{{ $pista_id }}"> --}}
                                 @if ($reservada)
                                 <button type="submit"
                                     class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Anular</button>    
                                 @else
                                     
-                                <button type="submit"
+                                <button type="submit" wire:click="crearReserva('{{$diaYHora}}')" 
                                     class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Reservar</button>
                                 @endif
-                            </form>
+                            {{-- </form> --}}
                         </td>
                     @endfor
                 </tr>
