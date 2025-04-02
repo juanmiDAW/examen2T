@@ -45,7 +45,7 @@
                             @if ($diaYHora->toDateString() <= today()->toDateString())
                                 <p
                                     class="focus:outline-none text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                                    Ocupada</p>
+                                    No Disponible</p>
                             @elseif ($reservada && $reservada->user_id !== auth()->user()->id)
                                 <p type="button"
                                     class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
