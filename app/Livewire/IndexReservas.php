@@ -10,7 +10,7 @@ class IndexReservas extends Component
 {
     public $pistas;
     public $pistaSeleccionada;
-    public $pista_id;
+    public $pista_id = 1;
     public $diaYHora;
 
     public function mount()

@@ -2,7 +2,11 @@
 
     <select name="pista" id="pista" wire:model.live="pista_id">
         @foreach ($pistas as $pista)
-            <option value="{{ $pista->id }}">{{ $pista->nombre }}</option>
+        @php
+            
+            $selected = ($pista->id == $pista_id) ? 'selected' : '';
+        @endphp
+            <option value="{{ $pista->id }}" {{$selected}}>{{ $pista->nombre }}</option>
         @endforeach
     </select>
 
@@ -30,7 +34,7 @@
                             $reservada = \App\Models\Reserva::where('pista_id', $pista_id)
                                 ->where('diaYHora', $diaYHora)
                                 ->first();
-                        @endphp
+                                @endphp
                         <td>
                             {{-- <form action="{{ route('reservas.store') }}" method="post">
                                 @csrf
